@@ -1,0 +1,45 @@
+@mixin bg-default {
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+@mixin bg-cover {
+    @include bg-default;
+    background-size: cover;
+}
+@mixin bg-contain {
+    @include bg-default;
+    background-size: contain;
+}
+@mixin pseudo-block {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+@mixin grayscale {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+@mixin position-relative {
+    position: relative;
+}
+@mixin position-static {
+    position: static;
+}
+@mixin section-scrolling {
+	overflow: auto;
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+	&::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: darkgrey;
+		outline: 1px solid slategrey;
+	}
+}
