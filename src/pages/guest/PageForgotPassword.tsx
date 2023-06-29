@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrapper from "../../components/page/PageWrapper";
+import PageWrapper from "@components/page/PageWrapper";
 
 const PageForgotPassword = () => {
     return (

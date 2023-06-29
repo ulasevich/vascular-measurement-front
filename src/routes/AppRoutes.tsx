@@ -6,12 +6,12 @@ import {
     createBrowserRouter, 
     createRoutesFromElements
 } from "react-router-dom";
-import GuestLayout from "../layouts/GuestLayout";
-import AdminLayout from "../layouts/AdminLayout";
-import PageSignIn from "../pages/guest/PageSignIn";
-import PageForgotPassword from "../pages/guest/PageForgotPassword";
-import PagePatients from "../pages/admin/PagePatients";
-import PageSettings from "../pages/admin/PageSettings";
+import GuestLayout from "@layouts/GuestLayout";
+import AdminLayout from "@layouts/AdminLayout";
+import PageSignIn from "@pages/guest/PageSignIn";
+import PageForgotPassword from "@pages/guest/PageForgotPassword";
+import PagePatients from "@pages/admin/PagePatients";
+import PageSettings from "@pages/admin/PageSettings";
 
 const router = createBrowserRouter(
     createRoutesFromElements(

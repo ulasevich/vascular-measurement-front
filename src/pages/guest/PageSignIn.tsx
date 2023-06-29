@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrapper from "../../components/page/PageWrapper";
+import PageWrapper from "@components/page/PageWrapper";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, TextField,  } from "@mui/material";
 
