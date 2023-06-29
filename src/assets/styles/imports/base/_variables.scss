@@ -1,4 +1,4 @@
-$images-src: '../img';
+$images-src: '../images';
 
 $mobile-360: 360px;
 $mobile-480: 480px;
@@ -17,30 +17,6 @@ $portrait: ' and (orientation: portrait)';
 $landscape: ' and (orientation: landscape)';
 
 :root {
-	--color-red: #dc3545;
-    --color-orange: #D0791B;
-    --color-yellow: #FAC13C;
-    --color-orange: #D09C00;
-    --color-gray: #6D6E70;
-    --color-blue: #007bff;
-
-    --font-family-primary: 'Inter', sans-serif;
-    --font-size-default: 113%;
-
-    --font-color-dark-primary: #4F4F4F;
-    --font-color-dark-secondary: #2E2E2E;
-
-    --font-color-light-primary: #ffffff;
-    --font-color-light-secondary: #E8E8E8;
-
-    --bg-color-dark-primary: #131313;
-    --bg-color-dark-secondary: #212121;
-    --bg-color-light-primary: #ffffff;
-    --bg-color-light-secondary: #FFF8EF;
-
-    --link-color: #0173C1;
-    --link-color-hover: #013E83;
-
     --main-padding: 15px;
 	
 	--container-max-width-main: 1150px;
