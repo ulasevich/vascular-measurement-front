@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Container, Grid } from '@mui/material';
+import ProfileMenu from '@components/layout/ProfileMenu';
+import MainMenu from '@components/layout/MainMenu';
 
 
 const AdminLayout = () => {
@@ -10,14 +11,10 @@ const AdminLayout = () => {
                 <Container maxWidth={false}>
                     <Grid container>
                         <Grid item xs>
-                            <div className="app-main-menu">
-                                <NavLink to="patients">Реестр пациентов</NavLink>
-                                <NavLink to="administration">Администрировние</NavLink>
-                                <NavLink to="settings">Настройки</NavLink>
-                            </div>
+                            <MainMenu />
                         </Grid>
                         <Grid xs="auto">
-                            Admin
+                            <ProfileMenu />
                         </Grid>
                     </Grid>
                 </Container>

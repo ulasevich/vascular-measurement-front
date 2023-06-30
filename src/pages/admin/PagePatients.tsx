@@ -13,7 +13,7 @@ const PagePatients = () => {
                     <Button variant="contained">Добавить запись</Button>
                 </Grid>
                 <Grid item xs="auto">
-                    <Button variant="outlined">Настройки</Button>
+                    <Button variant="outlined" color="secondary">Настройки</Button>
                 </Grid>
             </Grid>
             <div>
