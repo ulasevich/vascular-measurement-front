@@ -17,12 +17,11 @@ $portrait: ' and (orientation: portrait)';
 $landscape: ' and (orientation: landscape)';
 
 :root {
-    --main-padding: 15px;
-	
-	--container-max-width-main: 1150px;
-	--container-max-width-middle: 900px;
+	--color-primary: #4094F7;
+
+	--font-color-primary: #252C32;
 	
 	@media all and (max-width: $mobile-992) {
-		--font-size-default: 100%;
+		
 	}
 }

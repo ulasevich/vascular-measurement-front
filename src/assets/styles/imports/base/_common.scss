@@ -1,65 +1,58 @@
 html {
     height: 100%;
-	font-size: var(--font-size-default);
     scroll-behavior: smooth;
-}
-body {
-    font-family: var(--font-family-primary);
-    line-height: var(--line-height-default);
-    color: var(--font-color-dark-primary);
-    height: 100%;
-    background-color: var(--bg-color-light-primary);
-}
-.container-fluid {
-    position: relative;
-    padding-left: var(--main-padding);
-    padding-right: var(--main-padding);
-}
-.main-container {
-    max-width: var(--container-max-width-main);
-}
-.middle-container {
-    max-width: var(--container-max-width-middle);
-}
-
-a {
-    text-decoration: underline;
-    color: var(--link-color);
-    outline: none;
-    text-underline-offset: 3px;
-    &:hover {
-        color: var(--link-color-hover);
-    }
-}
-button,
-input,
-select,
-textarea,
-.input {
-    outline: none !important;
-    font-family: var(--font-family-primary);
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--input-font-color);
-}
-textarea {
-    resize: none;
 }
 img, object {
     max-width: 100%;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    th,
-    td {
-        vertical-align: top;
-        text-align: left;
-        padding: 5px;
+.app-page {
+    display: grid;
+    grid-template-areas: "header" "main";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    &-header {
+        grid-area: header;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #DDDEE2;
+        background-color: #FFFFFF;
+    }
+    &-main {
+        grid-area: main;
+        overflow: auto;
+        padding: 25px 0 25px;
+        display: flex;
+        &--align-center {
+            align-items: center;
+        }
     }
 }
-.table-wrapper,
-.scroll-block {
-    overflow: auto;
+
+.app-main-menu {
+    display: flex;
+    gap: 1.5rem;
+    a {
+        color: var(--font-color-primary);
+        font-weight: 500;
+        text-decoration: none;
+        &.active {
+            color: var(--color-primary);
+        }
+    }
 }
 
+.app-form-paper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #E5E9EB;
+    padding: 40px 20px;
+}
+
+.no-decoration {
+    text-decoration: none;
+}

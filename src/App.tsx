@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppRoutes from "./routes/AppRoutes";
+import "typeface-inter";
 import { appTheme } from "./assets/themes/appTheme";
 import "./assets/styles/main.scss";
 

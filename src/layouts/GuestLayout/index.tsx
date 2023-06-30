@@ -1,19 +1,19 @@
+import { Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+import FormPaper from '@components/container/FormPaper';
 
 const GuestLayout = () => {
     return (
-        <div className='page'>
-            <header>
-                <div className='main-container' style={{backgroundColor: 'gray', padding: 20}}>
-                    Шапка GuestLayout
-                </div>
-            </header>
-            <main>
-                <div className='main-container'>
-                    <Outlet />
-                </div>
+        <div className="app-page">
+            <main className="app-page-main app-page-main--align-center">
+                <Container maxWidth="md">
+                    <FormPaper>
+                        <Container maxWidth="xs">
+                            <Outlet />
+                        </Container>
+                    </FormPaper>
+                </Container>
             </main>
-            <footer>GuestLayout footer</footer>
         </div>
     )
 }
