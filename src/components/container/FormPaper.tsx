@@ -1,10 +1,10 @@
-import React, { FC } from "react"
+import React from "react"
 
-interface IFormPaper {
+type FormPaperProps = {
     children: React.ReactNode;
 }
 
-const FormPaper: FC<IFormPaper> = (props) => {
+const FormPaper = (props: FormPaperProps): React.ReactElement => {
     return (
         <div className="app-form-paper">
             <div className="app-form-paper__content">

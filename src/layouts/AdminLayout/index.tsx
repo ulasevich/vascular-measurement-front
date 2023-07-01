@@ -9,11 +9,11 @@ const AdminLayout = () => {
         <div className="app-page">
             <header className="app-page-header">
                 <Container maxWidth={false}>
-                    <Grid container>
+                    <Grid container alignItems="center">
                         <Grid item xs>
                             <MainMenu />
                         </Grid>
-                        <Grid xs="auto">
+                        <Grid item xs="auto">
                             <ProfileMenu />
                         </Grid>
                     </Grid>

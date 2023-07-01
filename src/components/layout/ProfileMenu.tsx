@@ -11,16 +11,22 @@ import {
     Logout,
     AccountCircle
 } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 
 const ProfileMenu = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const profileMenuIsOpen = Boolean(anchorEl);
+    const navigate = useNavigate();
+
+    const handleProfileMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleProfileMenuClose = () => {
         setAnchorEl(null);
+    };
+    const handleProfileMenuLogOut = () => {
+        navigate('/');
     };
 
     return (
@@ -29,22 +35,22 @@ const ProfileMenu = () => {
                 variant="text"
                 color="secondary"
                 endIcon={<KeyboardArrowDown />}
-                onClick={handleClick}
+                onClick={handleProfileMenuClick}
             >
                 Александр (admin)
             </Button>
             <Menu
                 anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
+                open={profileMenuIsOpen}
+                onClose={handleProfileMenuClose}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleProfileMenuClose}>
                     <ListItemIcon>
                         <AccountCircle fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Мой профиль</ListItemText>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleProfileMenuLogOut}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>

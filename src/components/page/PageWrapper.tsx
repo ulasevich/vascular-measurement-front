@@ -1,12 +1,12 @@
-import React, { FC } from "react";
+import React from "react";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-interface IPageWrapper {
+type PageWrapperProps = {
     title: string;
     children: React.ReactNode;
 }
 
-const PageWrapper: FC<IPageWrapper> = (props) => {
+const PageWrapper = (props: PageWrapperProps): React.ReactElement => {
     return (
         <HelmetProvider>
             <Helmet>

@@ -29,7 +29,7 @@ const PageForgotPassword = () => {
                     >Восстановить</Button>
                 </Grid>
                 <Grid item xs={12} textAlign={"center"}>
-                    <Link to="/sign-in" className="no-decoration">Войти</Link>
+                    <Link to="/sign-in" className="no-decoration">Авторизоваться</Link>
                 </Grid>
             </Grid>
         </PageWrapper>
