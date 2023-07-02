@@ -6,8 +6,8 @@ type FormPaperProps = {
 
 const FormPaper = (props: FormPaperProps): React.ReactElement => {
     return (
-        <div className="app-form-paper">
-            <div className="app-form-paper__content">
+        <div className="app-guest-form-paper">
+            <div className="app-guest-form-paper__content">
                 {props.children}
             </div>
         </div>

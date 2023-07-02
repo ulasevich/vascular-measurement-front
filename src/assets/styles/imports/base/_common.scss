@@ -23,7 +23,6 @@ img, object {
         grid-area: main;
         overflow: auto;
         padding: 25px 0 25px;
-        display: flex;
         &--align-center {
             align-items: center;
         }
@@ -43,15 +42,29 @@ img, object {
     }
 }
 
-.app-form-paper {
+.app-guest-form-paper {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #FFFFFF;
     border-radius: 12px;
-    border: 1px solid #E5E9EB;
+    border: 1px solid var(--border-color-primary);
     padding: 40px 20px;
     min-height: 50vh;
+}
+
+.app-page-search-paper {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border: 1px solid var(--border-color-primary);
+    margin-bottom: 20px;
+    &__input {
+        flex: 1;
+    }
+    &__divider {
+        margin: 0 5px;
+    }
 }
 
 .no-decoration {
