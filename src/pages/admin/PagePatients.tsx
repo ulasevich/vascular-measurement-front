@@ -9,7 +9,7 @@ import {
 } from '@mui/icons-material';
 import PageWrapper from "@components/page/PageWrapper";
 import TableSearchForm from "@components/page/TableSearchForm";
-import DataTable from "@components/page/DataTable";
+import DataTable from "@components/table/DataTable";
 
 
 const PagePatients = () => {

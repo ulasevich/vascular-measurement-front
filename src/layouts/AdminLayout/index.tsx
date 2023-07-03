@@ -6,7 +6,7 @@ import MainMenu from '@components/layout/MainMenu';
 
 const AdminLayout = () => {
     return (
-        <div className="app-page">
+        <div className="app-page app-page--admin">
             <header className="app-page-header">
                 <Container maxWidth={false}>
                     <Grid container alignItems="center">

@@ -23,9 +23,11 @@ img, object {
         grid-area: main;
         overflow: auto;
         padding: 25px 0 25px;
-        &--align-center {
-            align-items: center;
-        }
+        
+    }
+    &--guest &-main {
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -51,20 +53,6 @@ img, object {
     border: 1px solid var(--border-color-primary);
     padding: 40px 20px;
     min-height: 50vh;
-}
-
-.app-page-search-paper {
-    display: flex;
-    align-items: center;
-    padding: 5px 15px;
-    border: 1px solid var(--border-color-primary);
-    margin-bottom: 20px;
-    &__input {
-        flex: 1;
-    }
-    &__divider {
-        margin: 0 5px;
-    }
 }
 
 .no-decoration {

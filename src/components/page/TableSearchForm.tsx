@@ -11,14 +11,30 @@ import {
     FileDownloadOutlined
 } from '@mui/icons-material';
 
+const stylesSx = {
+    paper: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '5px 15px',
+        border: '1px solid var(--border-color-primary)',
+        marginBottom: '20px',
+        boxShadow: 'none',
+        borderRadius: '6px'
+    },
+    input: {
+        flex: 1
+    },
+    divider: {
+        margin: 1
+    }
+}
+
 const TableSearchForm = (): React.ReactElement => {
     return (
-        <Paper
-            className="app-page-search-paper"
-        >
+        <Paper sx={stylesSx.paper}>
             <InputBase
                 placeholder="Поиск по"
-                className="app-page-search-paper__input"
+                sx={stylesSx.input}
             />
             <IconButton type="button">
                 <Search />
@@ -26,7 +42,7 @@ const TableSearchForm = (): React.ReactElement => {
             <Divider 
                 orientation="vertical" 
                 flexItem 
-                sx={{m: 1}}
+                sx={stylesSx.divider}
             />
             <IconButton type="button">
                 <FilterAltOutlined />
