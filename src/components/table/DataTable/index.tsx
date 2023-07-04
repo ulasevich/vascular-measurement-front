@@ -61,7 +61,7 @@ const CustomPagination = () => {
                     >
                         {pageSizeOptions.map(function(size) {
                             return (
-                                <MenuItem value={size}>{size}</MenuItem>
+                                <MenuItem value={size} key={size}>{size}</MenuItem>
                             )
                         })}
                     </Select>
@@ -78,7 +78,7 @@ const dataGridSx = {
         color: "#6E7C87",
         fontSize: 14
     },
-    "& .MuiDataGrid-row:nth-child(odd)": {
+    "& .MuiDataGrid-row:nth-of-type(odd)": {
         backgroundColor: "#FFFFFF",
     },
     "& .MuiDataGrid-footerContainer": {

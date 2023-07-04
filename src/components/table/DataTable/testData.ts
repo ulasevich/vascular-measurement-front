@@ -1,4 +1,4 @@
-type tableRowProps = {
+export type tablePatientsRowProps = {
     id: number,
     externalId: string,
     description?: string | null,
@@ -9,7 +9,7 @@ type tableRowProps = {
     doctor?: string | null,
 }
 
-export let rows: tableRowProps[] = [
+export let patientRows: tablePatientsRowProps[] = [
     {
         id: 125123, 
         externalId: "74er152", 
