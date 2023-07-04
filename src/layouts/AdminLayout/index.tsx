@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Container, Grid } from '@mui/material';
-import ProfileMenu from '@components/layout/ProfileMenu';
-import MainMenu from '@components/layout/MainMenu';
+import ProfileMenu from '@components/navigation/ProfileMenu';
+import MainMenu from '@components/navigation/MainMenu';
 
 
 const AdminLayout = () => {

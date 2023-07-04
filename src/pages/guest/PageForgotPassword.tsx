@@ -6,11 +6,12 @@ import {
 } from "@mui/material";
 import PageWrapper from "@components/page/PageWrapper";
 import { Link } from "react-router-dom";
+import { APP_NAME } from "@constants/appConstants";
 
 const PageForgotPassword = () => {
     return (
         <PageWrapper title="Забыли пароль?">
-            <Typography mb={3} variant={'h3'} align="center">Система «Измерение сосудов»</Typography>
+            <Typography mb={3} variant={'h3'} align="center">{APP_NAME}</Typography>
             <Typography mb={3} variant={'h1'} align="center">Забыли пароль?</Typography>
             
             <Grid container spacing={3}>

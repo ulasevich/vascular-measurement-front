@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, FormikProps, Field } from 'formik';
 import * as yup from 'yup';
 import PageWrapper from "@components/page/PageWrapper";
+import { APP_NAME } from '@constants/appConstants';
 
 
 const PageSignIn = () => {
@@ -48,7 +49,7 @@ const PageSignIn = () => {
 
     return (
         <PageWrapper title="Авторизация">
-            <Typography mb={3} variant={'h3'} align="center">Система «Измерение сосудов»</Typography>
+            <Typography mb={3} variant={'h3'} align="center">{APP_NAME}</Typography>
             <Typography mb={3} variant={'h1'} align="center">Авторизация</Typography>
             
             <Formik

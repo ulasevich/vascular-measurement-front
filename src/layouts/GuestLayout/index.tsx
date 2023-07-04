@@ -1,17 +1,17 @@
 import { Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import FormPaper from '@components/container/FormPaper';
+import GuestFormPaper from '@components/container/GuestFormPaper';
 
 const GuestLayout = () => {
     return (
         <div className="app-page app-page--guest">
             <main className="app-page-main app-page-main--align-center">
                 <Container maxWidth="md">
-                    <FormPaper>
+                    <GuestFormPaper>
                         <Container maxWidth="xs">
                             <Outlet />
                         </Container>
-                    </FormPaper>
+                    </GuestFormPaper>
                 </Container>
             </main>
         </div>

@@ -10,7 +10,6 @@ import {
     gridFilteredTopLevelRowCountSelector
 } from "@mui/x-data-grid";
 import { 
-    Button, 
     Grid, 
     Pagination, 
     Select, 
@@ -18,8 +17,14 @@ import {
     SelectChangeEvent,
     Box
 } from "@mui/material";
-import { rows } from "./testData";
 
+
+type DataTableProps = {
+    rows: any;
+    columns: GridColDef[];
+}
+
+const pageSizeOptions = [5, 25, 50, 100]; // больше 100 на странице компонент x-data-grid не позволяет
 
 const CustomPagination = () => {
     const apiRef = useGridApiContext();
@@ -50,14 +55,15 @@ const CustomPagination = () => {
                         onChange={(event: SelectChangeEvent) =>
                             apiRef.current.setPageSize(Number(event.target.value))
                         } 
-                        defaultValue="5" 
+                        defaultValue={String(pageSizeOptions[0])} 
                         size="small"
                         sx={{fontSize: 14}}
                     >
-                        <MenuItem value={5}>5</MenuItem>
-                        <MenuItem value={25}>25</MenuItem>
-                        <MenuItem value={50}>50</MenuItem>
-                        <MenuItem value={100}>100</MenuItem>
+                        {pageSizeOptions.map(function(size) {
+                            return (
+                                <MenuItem value={size}>{size}</MenuItem>
+                            )
+                        })}
                     </Select>
                 </Grid>
             </Grid>
@@ -80,87 +86,22 @@ const dataGridSx = {
     }
 }
 
-const columns: GridColDef[] = [
-    { 
-        field: "id", 
-        headerName: "ID" 
-    },
-    {
-        field: "externalId",
-        headerName: "Внешний ID",
-        //editable: true,
-    },
-    {
-        field: "description",
-        headerName: "Описание",
-        minWidth: 150,
-        flex: 1
-    },
-    {
-        field: "parameters",
-        headerName: "Параметры",
-        description: "Развернутое описание колонки Параметры",
-        minWidth: 220
-    },
-    {
-        field: "calc_parameters",
-        headerName: "Расчетные параметры",
-        description: "Развернутое описание колонки Расчетные параметры",
-        minWidth: 200
-    },
-    {
-        field: "classifier",
-        headerName: "Классификатор",
-        description: "Развернутое описание колонки Классификатор",
-        minWidth: 200
-    },
-    {
-        field: "treatment",
-        headerName: "Реком. лечение",
-        flex: 1
-    },
-    {
-        field: "doctor",
-        headerName: "Доктор",
-        minWidth: 200
-    },
-    {
-        field: "controls",
-        headerName: "",
-        renderCell:params=>(
-            <>
-            <Button 
-                variant="outlined" 
-                color="secondary"
-            >
-                btn {params.row.age}
-            </Button>
-            </>
-        ),
-        sortable: false,
-        disableColumnMenu: true,
-        align: "right"
-    },
-];
-
-
-const DataTable = (): React.ReactElement => {
+const DataTable = (props: DataTableProps): React.ReactElement => {
     return (
         <DataGrid
-            rows={rows}
-            columns={columns}
+            rows={props.rows}
+            columns={props.columns}
             sx={dataGridSx}
             initialState={{
                 pagination: {
                     paginationModel: {
-                        pageSize: 5,
+                        pageSize: pageSizeOptions[0],
                     },
                 },
             }}
             slots={{
                 pagination: CustomPagination,
             }}
-            pageSizeOptions={[5, 25, 50, 100]}
             //checkboxSelection
             disableRowSelectionOnClick
             localeText={ruRU.components.MuiDataGrid.defaultProps.localeText}
