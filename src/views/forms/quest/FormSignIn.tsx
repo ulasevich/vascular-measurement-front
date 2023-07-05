@@ -1,19 +1,21 @@
-import React from "react";
-//import { useState } from 'react';
+import React, { useState } from "react";
 import { 
     Button, 
     Checkbox, 
     FormControlLabel, 
     Grid, 
-    TextField, 
+    IconButton, 
+    TextField
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, FormikProps, Field } from 'formik';
 import * as yup from 'yup';
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const FormSignIn = (): React.ReactElement => {
     const navigate = useNavigate();
     //const [submitted, setSubmitted] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     type FormSignInProps = {
         user_email: string
@@ -42,6 +44,11 @@ const FormSignIn = (): React.ReactElement => {
         setTimeout(() => {
             navigate('/admin');
         }, 2000);
+    };
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
     };
 
     return (
@@ -78,9 +85,21 @@ const FormSignIn = (): React.ReactElement => {
                                     label="Пароль" 
                                     variant="outlined" 
                                     fullWidth 
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     error={Boolean(errors.user_password) && Boolean(touched.user_password)}
                                     helperText={Boolean(touched.user_password) && errors.user_password}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <IconButton
+                                                title="Изменить видимость пароля"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs>

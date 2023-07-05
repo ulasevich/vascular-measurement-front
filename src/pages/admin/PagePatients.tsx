@@ -17,11 +17,12 @@ import TableSearchForm from "@components/table/TableSearchForm";
 import DataTable from "@components/table/DataTable";
 import AppModal from "@components/modal/AppModal";
 import { patientRows, tablePatientsRowProps } from "@components/table/DataTable/testData";
+import FormPatientDetail from "@views/forms/admin/FormPatientDetail";
 
 
 const PagePatients = () => {
     const [isPatientViewOpen, setPatientViewOpen] = useState(false);
-    const [currentRow, setCurrentRow] = useState<tablePatientsRowProps>(Object);
+    const [currentPatient, setCurrentPatient] = useState<tablePatientsRowProps>(Object);
 
     const patientColumns: GridColDef[] = [
         { 
@@ -31,7 +32,8 @@ const PagePatients = () => {
         {
             field: "externalId",
             headerName: "Внешний ID",
-            //editable: true,
+            minWidth: 120,
+            editable: true,
         },
         {
             field: "description",
@@ -43,7 +45,8 @@ const PagePatients = () => {
             field: "parameters",
             headerName: "Параметры",
             description: "Развернутое описание колонки Параметры",
-            minWidth: 220
+            minWidth: 220,
+            editable: true,
         },
         {
             field: "calc_parameters",
@@ -87,8 +90,8 @@ const PagePatients = () => {
     ];
     
     const handleClickPatientView = (params: any) => {
-        console.log(params);
-        setCurrentRow(params.row);
+        //console.log(params);
+        setCurrentPatient(params.row);
         setPatientViewOpen(true);
     }
 
@@ -125,12 +128,14 @@ const PagePatients = () => {
             />
 
             <AppModal
-                title={currentRow.externalId}
+                title={`Пациент (внешний ID: ${currentPatient.externalId})`}
                 open={isPatientViewOpen}
                 handleModalopen={setPatientViewOpen}
-                maxWidth="md"
+                maxWidth={"xl"}
             >
-                <div>{currentRow.description}</div>
+                <FormPatientDetail
+                    currentPatient={currentPatient}
+                />
             </AppModal>
 
         </PageWrapper>

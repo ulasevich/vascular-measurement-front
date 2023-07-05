@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { 
-    Dialog, 
-    DialogContent, 
-    DialogTitle 
+    Grid,
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    IconButton
 } from "@mui/material";
 import { DialogProps } from '@mui/material/Dialog';
+import { Close } from "@mui/icons-material";
 
 
 type AppModalProps = {
@@ -15,14 +18,36 @@ type AppModalProps = {
     handleModalopen: (open: boolean) => void;
 }
 
-const AppModal = (props: AppModalProps) => {
+const stylesSx = {
+    title: {
+        borderBottom: '1px solid var(--border-color-primary)', 
+        mb: 2,
+        lineHeight: '1.3'
+    }
+}
 
+const AppModal = (props: AppModalProps): React.ReactElement => {
     return (
         <Dialog 
             open={props.open}
             onClose={()=>props.handleModalopen(false)}
+            maxWidth={props.maxWidth}
+            fullWidth={true}
         >
-            <DialogTitle>{props.title}</DialogTitle>
+            <DialogTitle sx={stylesSx.title}>
+                <Grid 
+                    container 
+                    spacing={2}
+                    alignItems={"center"}
+                >
+                    <Grid item xs>{props.title}</Grid>
+                    <Grid item xs="auto">
+                        <IconButton type="button" onClick={() => props.handleModalopen(false)}>
+                            <Close />
+                        </IconButton>
+                    </Grid>
+                </Grid>
+            </DialogTitle>
             <DialogContent>
                 {props.children}
             </DialogContent>

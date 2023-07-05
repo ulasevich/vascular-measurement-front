@@ -13,7 +13,7 @@ export const appTheme = createTheme({
         },
         h3: {
             fontSize: 16,
-            fontWeight: 500,
+            fontWeight: 600,
         },
     },
     components: {
