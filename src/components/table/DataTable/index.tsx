@@ -33,9 +33,9 @@ const CustomPagination = () => {
     const totalRows = useGridSelector(apiRef, gridFilteredTopLevelRowCountSelector);
 
     return (
-        <Box sx={{pl: 1, pr: 1, width: 1}}>
-            <Grid container columnSpacing={2} alignItems={"center"}>
-                <Grid item xs>
+        <Box sx={{p: 1, width: 1}}>
+            <Grid container spacing={1} alignItems={"center"}>
+                <Grid item sm xs={12}>
                     <Pagination
                         page={page + 1}
                         count={pageCount}
@@ -44,13 +44,13 @@ const CustomPagination = () => {
                         }
                     />
                 </Grid>
-                <Grid item xs="auto">
+                <Grid item sm="auto" xs>
                     Всего строк: {totalRows} 
                 </Grid>
-                <Grid item xs="auto">
+                <Grid item sm="auto">
                     Строк на странице
                 </Grid>
-                <Grid item xs="auto">
+                <Grid item sm="auto">
                     <Select 
                         onChange={(event: SelectChangeEvent) =>
                             apiRef.current.setPageSize(Number(event.target.value))
@@ -81,8 +81,12 @@ const dataGridSx = {
     "& .MuiDataGrid-row:nth-of-type(odd)": {
         backgroundColor: "#FFFFFF",
     },
+    "& .MuiDataGrid-row:hover": {
+        backgroundColor: "#D0E0EE",
+    },
     "& .MuiDataGrid-footerContainer": {
         backgroundColor: "#FFFFFF",
+        color: "#6E7C87"
     }
 }
 

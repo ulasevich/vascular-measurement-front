@@ -3,28 +3,41 @@ import {
     Button, 
     Grid, 
     IconButton, 
+    ListItemIcon, 
+    ListItemText, 
+    Menu, 
+    MenuItem, 
     Typography
 } from "@mui/material";
 import {
     Add,
     AssignmentOutlined,
-    MoreHorizOutlined,
-    Tune
+    CreateOutlined,
+    FolderZipOutlined,
+    HealthAndSafetyOutlined,
+    MoreHorizOutlined
 } from '@mui/icons-material';
-import { GridColDef } from "@mui/x-data-grid";
+import {
+    GridColDef,
+    GridValueGetterParams
+} from "@mui/x-data-grid";
 import PageWrapper from "@components/page/PageWrapper";
 import TableSearchForm from "@components/table/TableSearchForm";
 import DataTable from "@components/table/DataTable";
 import AppModal from "@components/modal/AppModal";
-import { patientRows, tablePatientsRowProps } from "@components/table/DataTable/testData";
+import { patientsRows, tablePatientsRowProps } from "@components/table/DataTable/testData";
 import FormPatientDetail from "@views/forms/admin/FormPatientDetail";
 
 
 const PagePatients = () => {
-    const [isPatientViewOpen, setPatientViewOpen] = useState(false);
     const [currentPatient, setCurrentPatient] = useState<tablePatientsRowProps>(Object);
 
-    const patientColumns: GridColDef[] = [
+    const [isPatientViewOpen, setPatientViewOpen] = useState(false);
+
+    const [tableRowMenuAnchorEl, setTableRowMenuAnchorEl] = useState<null | HTMLElement>(null);
+    const tableRowMenuIsOpen = Boolean(tableRowMenuAnchorEl);
+
+    const patientsColumns: GridColDef[] = [
         { 
             field: "id", 
             headerName: "ID" 
@@ -32,8 +45,7 @@ const PagePatients = () => {
         {
             field: "externalId",
             headerName: "Внешний ID",
-            minWidth: 120,
-            editable: true,
+            //editable: true,
         },
         {
             field: "description",
@@ -44,9 +56,10 @@ const PagePatients = () => {
         {
             field: "parameters",
             headerName: "Параметры",
-            description: "Развернутое описание колонки Параметры",
+            description: "Параметры снимка",
             minWidth: 220,
-            editable: true,
+            valueGetter: (params: GridValueGetterParams) => 
+                `${params.row.angle_bifurcation || '_'}°/${params.row.angle_BCA || '_'}°/${params.row.angle_HCA || '_'}°/${params.row.diameter_OCA || '_'}/${params.row.diameter_bulb || '_'}/${params.row.diameter_ВСА || '_'}`
         },
         {
             field: "calc_parameters",
@@ -63,12 +76,13 @@ const PagePatients = () => {
         {
             field: "treatment",
             headerName: "Реком. лечение",
-            flex: 1
+            flex: 1,
+            minWidth: 150
         },
         {
             field: "doctor",
             headerName: "Доктор",
-            minWidth: 200
+            minWidth: 150
         },
         {
             field: "controls",
@@ -78,7 +92,7 @@ const PagePatients = () => {
                     <IconButton type="button" onClick={() => handleClickPatientView(params)}>
                         <AssignmentOutlined />
                     </IconButton>
-                    <IconButton type="button">
+                    <IconButton type="button" onClick={(event) => handleTableRowMenuClick(event, params)}>
                         <MoreHorizOutlined />
                     </IconButton>
                 </>
@@ -95,9 +109,17 @@ const PagePatients = () => {
         setPatientViewOpen(true);
     }
 
+    const handleTableRowMenuClick = (event: React.MouseEvent<HTMLButtonElement>, params: any) => {
+        setCurrentPatient(params.row);
+        setTableRowMenuAnchorEl(event.currentTarget);
+    };
+    const handleTableRowMenuClose = () => {
+        setTableRowMenuAnchorEl(null);
+    };
+
     return (
         <PageWrapper title="Реестр пациентов">
-            <Grid container columnSpacing={2} mb={3}>
+            <Grid container spacing={2} mb={3}>
                 <Grid item xs>
                     <Typography variant={'h1'}>Реестр пациентов</Typography>
                 </Grid>
@@ -109,7 +131,7 @@ const PagePatients = () => {
                         Добавить запись
                     </Button>
                 </Grid>
-                <Grid item xs="auto">
+                {/* <Grid item xs="auto">
                     <Button 
                         variant="outlined" 
                         color="secondary"
@@ -117,14 +139,14 @@ const PagePatients = () => {
                     >
                         Настройки
                     </Button>
-                </Grid>
+                </Grid> */}
             </Grid>
 
             <TableSearchForm />
 
             <DataTable 
-                rows={patientRows}
-                columns={patientColumns}
+                rows={patientsRows}
+                columns={patientsColumns}
             />
 
             <AppModal
@@ -137,6 +159,32 @@ const PagePatients = () => {
                     currentPatient={currentPatient}
                 />
             </AppModal>
+
+            <Menu
+                anchorEl={tableRowMenuAnchorEl}
+                open={tableRowMenuIsOpen}
+                onClose={handleTableRowMenuClose}
+                disableScrollLock={true}
+            >
+                <MenuItem>
+                    <ListItemIcon>
+                        <CreateOutlined fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Редактирование</ListItemText>
+                </MenuItem>
+                <MenuItem>
+                    <ListItemIcon>
+                        <HealthAndSafetyOutlined fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Лечение</ListItemText>
+                </MenuItem>
+                <MenuItem>
+                    <ListItemIcon>
+                        <FolderZipOutlined fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Архивирование</ListItemText>
+                </MenuItem>
+            </Menu>
 
         </PageWrapper>
     )

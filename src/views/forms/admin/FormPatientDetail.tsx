@@ -4,8 +4,8 @@ import {
     Divider, 
     Grid, 
     IconButton, 
-    Tab, 
     Tabs, 
+    Tab, 
     TextField, 
     Typography 
 } from "@mui/material";
@@ -41,7 +41,7 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                     <Typography mb={3} variant={'h3'}>Параметры снимка</Typography>
                     <Grid container spacing={2}>
                         <Grid item container spacing={1} alignItems={"center"}>
-                            <Grid item xs={6}>Угол бифукации</Grid>
+                            <Grid item xs={6}>Угол бифуркации</Grid>
                             <Grid item xs>
                                 <TextField
                                     type="text"
@@ -49,7 +49,7 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Угол"
                                     name="angle_bifurcation"
-                                    value={props.currentPatient.externalId}
+                                    value={props.currentPatient.angle_bifurcation}
                                 />
                             </Grid>
                         </Grid>
@@ -61,14 +61,40 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     size="small"
                                     fullWidth
                                     label="Угол"
-                                    name="angle_bifurcation"
-                                    value={props.currentPatient.calc_parameters}
+                                    name="angle_BCA"
+                                    value={props.currentPatient.angle_BCA}
                                 />
                             </Grid>
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
                                 </IconButton>
+                            </Grid>
+                        </Grid>
+                        <Grid item container spacing={1} alignItems={"center"}>
+                            <Grid item xs={6}>Угол отклонения НСА</Grid>
+                            <Grid item xs>
+                                <TextField
+                                    type="text"
+                                    size="small"
+                                    fullWidth
+                                    label="Угол"
+                                    name="angle_HCA"
+                                    value={props.currentPatient.angle_HCA}
+                                />
+                            </Grid>
+                        </Grid>
+                        <Grid item container spacing={1} alignItems={"center"}>
+                            <Grid item xs={6}>Диаметр ОСА</Grid>
+                            <Grid item xs>
+                                <TextField
+                                    type="text"
+                                    size="small"
+                                    fullWidth
+                                    label="Диаметр"
+                                    name="diameter_OCA"
+                                    value={props.currentPatient.diameter_OCA}
+                                />
                             </Grid>
                         </Grid>
                     </Grid>

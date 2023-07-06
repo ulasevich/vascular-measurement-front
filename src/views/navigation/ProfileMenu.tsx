@@ -15,15 +15,15 @@ import { useNavigate } from 'react-router-dom';
 
 
 const ProfileMenu = () => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const profileMenuIsOpen = Boolean(anchorEl);
+    const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState<null | HTMLElement>(null);
+    const profileMenuIsOpen = Boolean(profileMenuAnchorEl);
     const navigate = useNavigate();
 
     const handleProfileMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
+        setProfileMenuAnchorEl(event.currentTarget);
     };
     const handleProfileMenuClose = () => {
-        setAnchorEl(null);
+        setProfileMenuAnchorEl(null);
     };
     const handleProfileMenuLogOut = () => {
         navigate('/');
@@ -40,9 +40,10 @@ const ProfileMenu = () => {
                 Александр (admin)
             </Button>
             <Menu
-                anchorEl={anchorEl}
+                anchorEl={profileMenuAnchorEl}
                 open={profileMenuIsOpen}
                 onClose={handleProfileMenuClose}
+                disableScrollLock={true}
             >
                 <MenuItem onClick={handleProfileMenuClose}>
                     <ListItemIcon>

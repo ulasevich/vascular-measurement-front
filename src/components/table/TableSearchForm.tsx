@@ -15,9 +15,9 @@ const stylesSx = {
     paper: {
         display: 'flex',
         alignItems: 'center',
-        padding: '5px 15px',
+        padding: '0 12px',
         border: '1px solid var(--border-color-primary)',
-        marginBottom: '20px',
+        mb: 2,
         boxShadow: 'none',
         borderRadius: '6px'
     },
