@@ -64,8 +64,10 @@ const PagePatients = () => {
         {
             field: "calc_parameters",
             headerName: "Расчетные параметры",
-            description: "Развернутое описание колонки Расчетные параметры",
-            minWidth: 200
+            description: "Расчетные параметры снимка",
+            minWidth: 200,
+            valueGetter: (params: GridValueGetterParams) => 
+                `${params.row.calc_delta_OCA_bulb || '_'}/${params.row.calc_delta_bulb_ВСА || '_'}/${params.row.calc_delta_OCA_ВСА || '_'}/${params.row.calc_ratio_bulb_ВСА || '_'}`
         },
         {
             field: "classifier",
