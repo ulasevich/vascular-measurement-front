@@ -27,10 +27,18 @@ const stylesSx = {
 }
 
 const AppModal = (props: AppModalProps): React.ReactElement => {
+
+    const handleAppModalClose = (event: object, reason: string) => {
+        if(reason === "backdropClick") { // лучше запретим закрытие формы на случай случайного клика по фону
+            return false;
+        }
+        props.handleModalopen(false);
+    };
+
     return (
         <Dialog 
             open={props.open}
-            onClose={()=>props.handleModalopen(false)}
+            onClose={handleAppModalClose}
             maxWidth={props.maxWidth}
             fullWidth={true}
         >

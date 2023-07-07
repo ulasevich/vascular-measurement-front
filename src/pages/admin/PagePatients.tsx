@@ -33,6 +33,7 @@ const PagePatients = () => {
     const [currentPatient, setCurrentPatient] = useState<tablePatientsRowProps>(Object);
 
     const [isPatientViewOpen, setPatientViewOpen] = useState(false);
+    const [isPatientReadOnly, setPatientReadOnly] = useState(false);
 
     const [tableRowMenuAnchorEl, setTableRowMenuAnchorEl] = useState<null | HTMLElement>(null);
     const tableRowMenuIsOpen = Boolean(tableRowMenuAnchorEl);
@@ -91,10 +92,10 @@ const PagePatients = () => {
             headerName: "",
             renderCell:params=>(
                 <>
-                    <IconButton type="button" onClick={() => handleClickPatientView(params)}>
+                    <IconButton type="button" onClick={() => handleClickPatientView(params.row, true)}>
                         <AssignmentOutlined />
                     </IconButton>
-                    <IconButton type="button" onClick={(event) => handleTableRowMenuClick(event, params)}>
+                    <IconButton type="button" onClick={(event) => handleTableRowMenuClick(event, params.row)}>
                         <MoreHorizOutlined />
                     </IconButton>
                 </>
@@ -105,14 +106,15 @@ const PagePatients = () => {
         },
     ];
     
-    const handleClickPatientView = (params: any) => {
+    const handleClickPatientView = (row: tablePatientsRowProps, isReadOnly: boolean) => {
         //console.log(params);
-        setCurrentPatient(params.row);
+        setCurrentPatient(row);
         setPatientViewOpen(true);
+        setPatientReadOnly(isReadOnly);
     }
 
-    const handleTableRowMenuClick = (event: React.MouseEvent<HTMLButtonElement>, params: any) => {
-        setCurrentPatient(params.row);
+    const handleTableRowMenuClick = (event: React.MouseEvent<HTMLButtonElement>, row: tablePatientsRowProps) => {
+        setCurrentPatient(row);
         setTableRowMenuAnchorEl(event.currentTarget);
     };
     const handleTableRowMenuClose = () => {
@@ -159,6 +161,7 @@ const PagePatients = () => {
             >
                 <FormPatientDetail
                     currentPatient={currentPatient}
+                    isPatientReadOnly={isPatientReadOnly}
                 />
             </AppModal>
 
@@ -168,7 +171,7 @@ const PagePatients = () => {
                 onClose={handleTableRowMenuClose}
                 disableScrollLock={true}
             >
-                <MenuItem>
+                <MenuItem onClick={() => handleClickPatientView(currentPatient, false)}>
                     <ListItemIcon>
                         <CreateOutlined fontSize="small" />
                     </ListItemIcon>

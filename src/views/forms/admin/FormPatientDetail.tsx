@@ -7,13 +7,15 @@ import {
     Tabs, 
     Tab, 
     TextField, 
-    Typography 
+    Typography, 
+    Button
 } from "@mui/material";
 import { PushPinOutlined } from "@mui/icons-material";
 import { tablePatientsRowProps } from "@components/table/DataTable/testData";
 
 type FormPatientDetailProps = {
     currentPatient: tablePatientsRowProps;
+    isPatientReadOnly: boolean;
 }
 
 const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement => {
@@ -56,9 +58,16 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled
+                                    disabled={props.isPatientReadOnly}
                                 />
                             </Grid>
+                            {!props.isPatientReadOnly &&
+                            <Grid item xs="auto">
+                                <IconButton type="button">
+                                    <PushPinOutlined />
+                                </IconButton>
+                            </Grid>
+                            }
                         </Grid>
                         <Grid item container spacing={1} alignItems={"center"}>
                             <Grid item xs={6}>Угол отклонения ВСА</Grid>
@@ -73,13 +82,16 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    disabled={props.isPatientReadOnly}
                                 />
                             </Grid>
+                            {!props.isPatientReadOnly &&
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
                                 </IconButton>
                             </Grid>
+                            }
                         </Grid>
                         <Grid item container spacing={1} alignItems={"center"}>
                             <Grid item xs={6}>Угол отклонения НСА</Grid>
@@ -94,8 +106,16 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    disabled={props.isPatientReadOnly}
                                 />
                             </Grid>
+                            {!props.isPatientReadOnly &&
+                            <Grid item xs="auto">
+                                <IconButton type="button">
+                                    <PushPinOutlined />
+                                </IconButton>
+                            </Grid>
+                            }
                         </Grid>
                         <Grid item container spacing={1} alignItems={"center"}>
                             <Grid item xs={6}>Диаметр ОСА</Grid>
@@ -110,8 +130,16 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    disabled={props.isPatientReadOnly}
                                 />
                             </Grid>
+                            {!props.isPatientReadOnly &&
+                            <Grid item xs="auto">
+                                <IconButton type="button">
+                                    <PushPinOutlined />
+                                </IconButton>
+                            </Grid>
+                            }
                         </Grid>
                         <Grid item container spacing={1} alignItems={"center"}>
                             <Grid item xs={6}>Диаметр луковицы (max)</Grid>
@@ -126,8 +154,16 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    disabled={props.isPatientReadOnly}
                                 />
                             </Grid>
+                            {!props.isPatientReadOnly &&
+                            <Grid item xs="auto">
+                                <IconButton type="button">
+                                    <PushPinOutlined />
+                                </IconButton>
+                            </Grid>
+                            }
                         </Grid>
                         <Grid item container spacing={1} alignItems={"center"}>
                             <Grid item xs={6}>Диаметр ВСА</Grid>
@@ -142,8 +178,16 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    disabled={props.isPatientReadOnly}
                                 />
                             </Grid>
+                            {!props.isPatientReadOnly &&
+                            <Grid item xs="auto">
+                                <IconButton type="button">
+                                    <PushPinOutlined />
+                                </IconButton>
+                            </Grid>
+                            }
                         </Grid>
                     </Grid>
 
@@ -151,57 +195,73 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
 
                     <Typography mb={3} variant={'h3'}>Расчетные параметры</Typography>
                     <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <TextField
-                                type="text"
-                                size="small"
-                                fullWidth
-                                label="Дельта диаметра ОСА и диаметра луковицы"
-                                name="calc_delta_OCA_bulb"
-                                value={props.currentPatient.calc_delta_OCA_bulb || ''}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
+                        <Grid item container spacing={1} alignItems={"center"}>
+                            <Grid item xs={6}>Дельта диаметра ОСА и диаметра луковицы</Grid>
+                            <Grid item xs>
+                                <TextField
+                                    type="text"
+                                    size="small"
+                                    fullWidth
+                                    label="Дельта"
+                                    name="calc_delta_OCA_bulb"
+                                    value={props.currentPatient.calc_delta_OCA_bulb || ''}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    disabled={props.isPatientReadOnly}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                type="text"
-                                size="small"
-                                fullWidth
-                                label="Дельта диаметра Луковицы и Диаметра ВСА"
-                                name="calc_delta_bulb_ВСА"
-                                value={props.currentPatient.calc_delta_bulb_ВСА || ''}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
+                        <Grid item container spacing={1} alignItems={"center"}>
+                            <Grid item xs={6}>Дельта диаметра Луковицы и Диаметра ВСА</Grid>
+                            <Grid item xs>
+                                <TextField
+                                    type="text"
+                                    size="small"
+                                    fullWidth
+                                    label="Дельта"
+                                    name="calc_delta_bulb_ВСА"
+                                    value={props.currentPatient.calc_delta_bulb_ВСА || ''}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    disabled={props.isPatientReadOnly}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                type="text"
-                                size="small"
-                                fullWidth
-                                label="Дельта диаметра ОСА и Диаметра ВСА"
-                                name="calc_delta_OCA_ВСА"
-                                value={props.currentPatient.calc_delta_OCA_ВСА || ''}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
+                        <Grid item container spacing={1} alignItems={"center"}>
+                            <Grid item xs={6}>Дельта диаметра ОСА и Диаметра ВСА</Grid>
+                            <Grid item xs>
+                                <TextField
+                                    type="text"
+                                    size="small"
+                                    fullWidth
+                                    label="Дельта"
+                                    name="calc_delta_OCA_ВСА"
+                                    value={props.currentPatient.calc_delta_OCA_ВСА || ''}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    disabled={props.isPatientReadOnly}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                type="text"
-                                size="small"
-                                fullWidth
-                                label="Отношение диаметра Луковицы к диаметру ВСА"
-                                name="calc_ratio_bulb_ВСА"
-                                value={props.currentPatient.calc_ratio_bulb_ВСА || ''}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
+                        <Grid item container spacing={1} alignItems={"center"}>
+                            <Grid item xs={6}>Отношение диаметра Луковицы к диаметру ВСА</Grid>
+                            <Grid item xs>
+                                <TextField
+                                    type="text"
+                                    size="small"
+                                    fullWidth
+                                    label="Дельта"
+                                    name="calc_ratio_bulb_ВСА"
+                                    value={props.currentPatient.calc_ratio_bulb_ВСА || ''}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    disabled={props.isPatientReadOnly}
+                                />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Box>
@@ -226,12 +286,35 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     shrink: true,
                                 }}
                                 multiline
-                                disabled
+                                disabled={props.isPatientReadOnly}
                             />
                         </Grid>
                     </Grid>
                 </Box>
             </Grid>
+            
+            {!props.isPatientReadOnly &&
+            <Grid item xs={12} alignContent={"center"}>
+                <Box sx={{display: "flex", gap: 2, justifyContent: "center"}}>
+                    <Button 
+                        variant="contained"
+                        size="large"
+                        type="submit"
+                        //disabled={!dirty || !isValid}
+                    >
+                        Сохранить
+                    </Button>
+                    <Button 
+                        variant="outlined"
+                        size="large"
+                        color="secondary"
+                    >
+                        Отменить
+                    </Button>
+                </Box>
+            </Grid>
+            }
+
         </Grid>
     )
 }
