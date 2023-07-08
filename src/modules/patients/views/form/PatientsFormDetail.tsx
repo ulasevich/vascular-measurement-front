@@ -11,14 +11,14 @@ import {
     Button
 } from "@mui/material";
 import { PushPinOutlined } from "@mui/icons-material";
-import { tablePatientsRowProps } from "@components/table/DataTable/testData";
+import { usePatientsStore } from "@modules/patients";
 
-type FormPatientDetailProps = {
-    currentPatient: tablePatientsRowProps;
-    isPatientReadOnly: boolean;
-}
 
-const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement => {
+const PatientsFormDetail = (): React.ReactElement => {
+    const currentPatient = usePatientsStore(state => state.currentPatient);
+    const isCurrentPatientReadOnly = usePatientsStore(state => state.isCurrentPatientReadOnly);
+
+
     const [currentPatentFormTab, setPatentFormTab] = useState(0);
 
     const handlePatentFormTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -54,14 +54,14 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Угол"
                                     name="angle_bifurcation"
-                                    value={props.currentPatient.angle_bifurcation || ''}
+                                    value={currentPatient.angle_bifurcation || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
-                            {!props.isPatientReadOnly &&
+                            {!isCurrentPatientReadOnly &&
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
@@ -78,14 +78,14 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Угол"
                                     name="angle_BCA"
-                                    value={props.currentPatient.angle_BCA || ''}
+                                    value={currentPatient.angle_BCA || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
-                            {!props.isPatientReadOnly &&
+                            {!isCurrentPatientReadOnly &&
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
@@ -102,14 +102,14 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Угол"
                                     name="angle_HCA"
-                                    value={props.currentPatient.angle_HCA || ''}
+                                    value={currentPatient.angle_HCA || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
-                            {!props.isPatientReadOnly &&
+                            {!isCurrentPatientReadOnly &&
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
@@ -126,14 +126,14 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Диаметр"
                                     name="diameter_OCA"
-                                    value={props.currentPatient.diameter_OCA || ''}
+                                    value={currentPatient.diameter_OCA || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
-                            {!props.isPatientReadOnly &&
+                            {!isCurrentPatientReadOnly &&
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
@@ -150,14 +150,14 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Диаметр"
                                     name="diameter_bulb"
-                                    value={props.currentPatient.diameter_bulb || ''}
+                                    value={currentPatient.diameter_bulb || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
-                            {!props.isPatientReadOnly &&
+                            {!isCurrentPatientReadOnly &&
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
@@ -174,14 +174,14 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Диаметр"
                                     name="diameter_ВСА"
-                                    value={props.currentPatient.diameter_ВСА || ''}
+                                    value={currentPatient.diameter_ВСА || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
-                            {!props.isPatientReadOnly &&
+                            {!isCurrentPatientReadOnly &&
                             <Grid item xs="auto">
                                 <IconButton type="button">
                                     <PushPinOutlined />
@@ -204,11 +204,11 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Дельта"
                                     name="calc_delta_OCA_bulb"
-                                    value={props.currentPatient.calc_delta_OCA_bulb || ''}
+                                    value={currentPatient.calc_delta_OCA_bulb || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
                         </Grid>
@@ -221,11 +221,11 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Дельта"
                                     name="calc_delta_bulb_ВСА"
-                                    value={props.currentPatient.calc_delta_bulb_ВСА || ''}
+                                    value={currentPatient.calc_delta_bulb_ВСА || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
                         </Grid>
@@ -238,11 +238,11 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Дельта"
                                     name="calc_delta_OCA_ВСА"
-                                    value={props.currentPatient.calc_delta_OCA_ВСА || ''}
+                                    value={currentPatient.calc_delta_OCA_ВСА || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
                         </Grid>
@@ -255,11 +255,11 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                     fullWidth
                                     label="Дельта"
                                     name="calc_ratio_bulb_ВСА"
-                                    value={props.currentPatient.calc_ratio_bulb_ВСА || ''}
+                                    value={currentPatient.calc_ratio_bulb_ВСА || ''}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    disabled={props.isPatientReadOnly}
+                                    disabled={isCurrentPatientReadOnly}
                                 />
                             </Grid>
                         </Grid>
@@ -281,19 +281,19 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
                                 fullWidth
                                 label="Рекомендованное лечение"
                                 name="treatment"
-                                value={props.currentPatient.treatment || ''}
+                                value={currentPatient.treatment || ''}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
                                 multiline
-                                disabled={props.isPatientReadOnly}
+                                disabled={isCurrentPatientReadOnly}
                             />
                         </Grid>
                     </Grid>
                 </Box>
             </Grid>
             
-            {!props.isPatientReadOnly &&
+            {!isCurrentPatientReadOnly &&
             <Grid item xs={12} alignContent={"center"}>
                 <Box sx={{display: "flex", gap: 2, justifyContent: "center"}}>
                     <Button 
@@ -319,4 +319,4 @@ const FormPatientDetail = (props: FormPatientDetailProps): React.ReactElement =>
     )
 }
 
-export default FormPatientDetail
+export default PatientsFormDetail
