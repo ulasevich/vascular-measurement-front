@@ -5,7 +5,7 @@ import GuestFormPaper from '@components/container/GuestFormPaper';
 const GuestLayout = () => {
     return (
         <div className="app-page app-page--guest">
-            <main className="app-page-main app-page-main--align-center">
+            <main className="app-page-main">
                 <Container maxWidth="md">
                     <GuestFormPaper>
                         <Container maxWidth="xs">

@@ -7,8 +7,11 @@ import {
 import {
     Add,
 } from '@mui/icons-material';
+import { usePatientsStore } from "@modules/patients";
 
 const PatientsHeading = (): React.ReactElement => {
+    const setModalPatientAddOpen = usePatientsStore(state => state.actions.setModalPatientAddOpen);
+
     return (
         <Grid container spacing={2} mb={3}>
             <Grid item xs>
@@ -18,19 +21,11 @@ const PatientsHeading = (): React.ReactElement => {
                 <Button 
                     variant="contained"
                     startIcon={<Add />}
+                    onClick={() => setModalPatientAddOpen(true)}
                 >
                     Добавить запись
                 </Button>
             </Grid>
-            {/* <Grid item xs="auto">
-                <Button 
-                    variant="outlined" 
-                    color="secondary"
-                    startIcon={<Tune />}
-                >
-                    Настройки
-                </Button>
-            </Grid> */}
         </Grid>
     )
 }

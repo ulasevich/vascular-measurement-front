@@ -27,10 +27,10 @@ const PatientsTable = (): React.ReactElement => {
     const patients = usePatientsStore(state => state.patients);
     const currentPatient = usePatientsStore(state => state.currentPatient);
 
-    const setCurrentPatient = usePatientsStore(state => state.setCurrentPatient);
-    const setCurrentPatientOpen = usePatientsStore(state => state.setCurrentPatientOpen);
-    const setCurrentPatientReadOnly = usePatientsStore(state => state.setCurrentPatientReadOnly);
-    const fetchPatients = usePatientsStore(state => state.fetchPatients);
+    const setCurrentPatient = usePatientsStore(state => state.actions.setCurrentPatient);
+    const setModalPatientDetailOpen = usePatientsStore(state => state.actions.setModalPatientDetailOpen);
+    const setCurrentPatientReadOnly = usePatientsStore(state => state.actions.setCurrentPatientReadOnly);
+    const fetchPatients = usePatientsStore(state => state.actions.fetchPatients);
 
 
     const [tableRowMenuAnchorEl, setTableRowMenuAnchorEl] = useState<null | HTMLElement>(null);
@@ -38,7 +38,7 @@ const PatientsTable = (): React.ReactElement => {
 
     const handleClickPatientView = (row: PatientProps, isReadOnly: boolean) => {
         setCurrentPatient(row);
-        setCurrentPatientOpen(true);
+        setModalPatientDetailOpen(true);
         setCurrentPatientReadOnly(isReadOnly);
     }
 

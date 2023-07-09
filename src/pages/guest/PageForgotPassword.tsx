@@ -3,7 +3,7 @@ import {
 } from "@mui/material";
 import PageWrapper from "@components/page/PageWrapper";
 import { APP_NAME } from "@constants/appConstants";
-import FormForgotPassword from "@views/forms/quest/FormForgotPassword";
+import FormForgotPassword from "@modules/authentication/views/FormForgotPassword";
 
 const PageForgotPassword = () => {
     return (

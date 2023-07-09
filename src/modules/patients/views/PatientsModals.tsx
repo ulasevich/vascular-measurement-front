@@ -1,25 +1,38 @@
 import React from "react";
 import AppModal from "@components/modal/AppModal";
 import { usePatientsStore } from "@modules/patients";
+import PatientsFormAdd from "@modules/patients/views/form/PatientsFormAdd";
 import PatientsFormDetail from "@modules/patients/views/form/PatientsFormDetail";
 
 
 const PatientsModals = (): React.ReactElement => {
     const currentPatient = usePatientsStore(state => state.currentPatient);
-    const isCurrentPatientOpen = usePatientsStore(state => state.isCurrentPatientOpen);
+    const isModalPatientAddOpen = usePatientsStore(state => state.isModalPatientAddOpen);
+    const isModalPatientDetailOpen = usePatientsStore(state => state.isModalPatientDetailOpen);
 
-    const setCurrentPatientOpen = usePatientsStore(state => state.setCurrentPatientOpen);
+    const setModalPatientAddOpen = usePatientsStore(state => state.actions.setModalPatientAddOpen);
+    const setModalPatientDetailOpen = usePatientsStore(state => state.actions.setModalPatientDetailOpen);
     
     return (
-        <AppModal
-            title={`Пациент (внешний ID: ${currentPatient.externalId})`}
-            open={isCurrentPatientOpen}
-            handleModalopen={setCurrentPatientOpen}
-            maxWidth={"xl"}
-        >
-            <PatientsFormDetail />
-        </AppModal>
+        <>
+            <AppModal
+                title={`Новая запись`}
+                open={isModalPatientAddOpen}
+                handleModalopen={setModalPatientAddOpen}
+                maxWidth={"xs"}
+            >
+                <PatientsFormAdd />
+            </AppModal>
 
+            <AppModal
+                title={`Пациент (внешний ID: ${currentPatient.externalId})`}
+                open={isModalPatientDetailOpen}
+                handleModalopen={setModalPatientDetailOpen}
+                maxWidth={"xl"}
+            >
+                <PatientsFormDetail />
+            </AppModal>
+        </>
     )
 }
 

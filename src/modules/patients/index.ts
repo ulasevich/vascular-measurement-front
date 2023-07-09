@@ -1,2 +1,2 @@
-export type { PatientProps } from "./types"
+export type { PatientProps, NewPatientProps } from "./types"
 export { usePatientsStore } from "./store";

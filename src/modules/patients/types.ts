@@ -1,38 +1,49 @@
-export type PatientProps = {
-    id: number,
+export type NewPatientProps = {
     externalId: string,
-    description?: string | null,
-    angle_bifurcation?: number | null,
-    angle_BCA?: number | null,
-    angle_HCA?: number | null,
-    diameter_OCA?: number | null,
-    diameter_bulb?: number | null,
-    diameter_ВСА?: number | null,
-    calc_delta_OCA_bulb?: number | null, 
-    calc_delta_bulb_ВСА?: number | null,
-    calc_delta_OCA_ВСА?: number | null,
-    calc_ratio_bulb_ВСА?: number | null,
-    classifier?: string | null,
-    treatment?: string | null,
-    doctor?: string | null,
+    description: string,
+    fileScan?: object
 }
+
+export type PatientProps = NewPatientProps & {
+    id: number,
+    angle_bifurcation?: number,
+    angle_BCA?: number,
+    angle_HCA?: number,
+    diameter_OCA?: number,
+    diameter_bulb?: number,
+    diameter_ВСА?: number,
+    calc_delta_OCA_bulb?: number, 
+    calc_delta_bulb_ВСА?: number,
+    calc_delta_OCA_ВСА?: number,
+    calc_ratio_bulb_ВСА?: number,
+    classifier?: string,
+    treatment?: string,
+    doctor?: string,
+};
 
 export type PatientsStoreProps = {
     patients: PatientProps[]
     isLoading: boolean,
-    error?: unknown,
+    errors?: unknown,
+    newPatient: NewPatientProps,
     currentPatient: PatientProps,
-    isCurrentPatientOpen: boolean,
     isCurrentPatientReadOnly: boolean,
+    isModalPatientAddOpen: boolean,
+    isModalPatientDetailOpen: boolean,
+    
+    actions: {
+        setCurrentPatient: (patient: PatientProps) => void,
 
-    setCurrentPatient: (patient: PatientProps) => void,
-    setCurrentPatientOpen: (open: boolean) => void,
-    setCurrentPatientReadOnly: (readOnly: boolean) => void,
-    addPatient: (
-        id: number, 
-        externalId: string, 
-        description?: string, 
-        //fileScan?: string
-    ) => void;
-    fetchPatients: () => void
-}
+        setCurrentPatientReadOnly: (readOnly: boolean) => void,
+
+        setModalPatientAddOpen: (open: boolean) => void,
+
+        setModalPatientDetailOpen: (open: boolean) => void,
+
+        fetchPatients: () => void,
+
+        addPatient: ( newPatient: NewPatientProps ) => void,
+
+        updatePatient: ( patient: PatientProps ) => void,
+    }
+};

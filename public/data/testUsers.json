@@ -1,0 +1,16 @@
+[
+    {
+       "id":1,
+       "email":"admin@admin.com",
+       "password":"1234567",
+       "role":"admin",
+       "fio":"Александр"
+    },
+    {
+      "id":2,
+      "email":"admin@admin.com",
+      "password":"111222",
+      "role":"doctor",
+      "fio":"Петров И.В."
+   }
+ ]

@@ -2,7 +2,7 @@
 import { Typography } from "@mui/material";
 import PageWrapper from "@components/page/PageWrapper";
 import { APP_NAME } from '@constants/appConstants';
-import FormSignIn from '@views/forms/quest/FormSignIn';
+import FormSignIn from '@modules/authentication/views/FormSignIn';
 
 
 const PageSignIn = () => {
