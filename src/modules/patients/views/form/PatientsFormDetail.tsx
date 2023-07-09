@@ -35,7 +35,7 @@ const PatientsFormDetail = (): React.ReactElement => {
     });
 
     const handlePatientsFormDetailSubmit = (values: PatientProps, actions: any) => {
-        console.log({ values, actions });
+        //console.log({ values, actions });
         //updatePatient(values);
         actions.setSubmitting(false);
         actions.resetForm();

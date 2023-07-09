@@ -15,11 +15,13 @@ import {
     Select, 
     MenuItem, 
     SelectChangeEvent,
-    Box
+    Box,
+    LinearProgress
 } from "@mui/material";
 
 
 type DataTableProps = {
+    isLoading: boolean;
     rows: any;
     columns: GridColDef[];
 }
@@ -72,11 +74,14 @@ const CustomPagination = () => {
 }
 
 const dataGridSx = {
-    borderRadius: '6px',
+    borderRadius: "6px",
     "& .MuiDataGrid-columnHeaders": {
         backgroundColor: "#e7ecef",
         color: "#6E7C87",
         fontSize: 14
+    },
+    "& .MuiDataGrid-virtualScroller": {
+        minHeight: "300px",
     },
     "& .MuiDataGrid-row:nth-of-type(odd)": {
         backgroundColor: "#FFFFFF",
@@ -93,6 +98,7 @@ const dataGridSx = {
 const DataTable = (props: DataTableProps): React.ReactElement => {
     return (
         <DataGrid
+            loading={props.isLoading}
             rows={props.rows}
             columns={props.columns}
             sx={dataGridSx}
@@ -105,6 +111,7 @@ const DataTable = (props: DataTableProps): React.ReactElement => {
             }}
             slots={{
                 pagination: CustomPagination,
+                loadingOverlay: LinearProgress
             }}
             //checkboxSelection
             disableRowSelectionOnClick

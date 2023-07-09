@@ -25,6 +25,7 @@ import { usePatientsStore, type PatientProps } from "@modules/patients";
 
 const PatientsTable = (): React.ReactElement => {
     const patients = usePatientsStore(state => state.patients);
+    const isLoading = usePatientsStore(state => state.isLoading);
     const currentPatient = usePatientsStore(state => state.currentPatient);
 
     const setCurrentPatient = usePatientsStore(state => state.actions.setCurrentPatient);
@@ -128,6 +129,7 @@ const PatientsTable = (): React.ReactElement => {
             <TableSearchForm />
 
             <DataTable 
+                isLoading={isLoading}
                 rows={patients}
                 columns={patientsColumns}
             />
